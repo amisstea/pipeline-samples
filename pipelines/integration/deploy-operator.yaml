@@ -16,6 +16,10 @@ spec:
       name: NAMESPACE
       default: default
       type: string
+    - description: Duration to wait for bundle installation to complete before failing.
+      name: OPERATOR_INSTALL_TIMEOUT
+      default: 5m
+      type: string
   tasks:
     - name: parse-metadata
       taskRef:
@@ -86,9 +90,9 @@ spec:
               resolver: git
               params:
                 - name: url
-                  value: https://github.com/konflux-ci/build-definitions.git
+                  value: https://github.com/amisstea/build-definitions.git
                 - name: revision
-                  value: main
+                  value: KFLUXVNGD-105
                 - name: pathInRepo
                   value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
             params:
@@ -96,6 +100,64 @@ spec:
                 value: $(tasks.provision-eaas-space.results.secretRef)
               - name: version
                 value: "$(steps.pick-version.results.version)"
+              - name: instanceType
+                value: m5.xlarge
+              - name: imageContentSources
+                value: |
+                  # certificate-transparency-go
+                  - mirrors:
+                      - quay.io/securesign/certificate-transparency-go
+                    source: "registry.redhat.io/rhtas/certificate-transparency-rhel9"
+                  # cli
+                  - mirrors:
+                      - quay.io/securesign/cli-client-server-cg
+                    source: 'registry.redhat.io/rhtas/client-server-cg-rhel9'
+                  - mirrors:
+                      - quay.io/securesign/client-server-re
+                    source: registry.redhat.io/rhtas/client-server-re-rhel9
+                  # operator
+                  - mirrors:
+                      - quay.io/securesign/rhtas-operator-bundle
+                    source: registry.redhat.io/rhtas/rhtas-operator-bundle
+                  - mirrors:
+                      - quay.io/securesign/rhtas-operator
+                    source: registry.redhat.io/rhtas/rhtas-rhel9-operator
+                  # fulcio
+                  - mirrors:
+                      - quay.io/securesign/fulcio-server
+                    source: registry.redhat.io/rhtas/fulcio-rhel9
+                  # rekor
+                  - mirrors:
+                      - quay.io/securesign/rekor-server
+                    source: registry.redhat.io/rhtas/rekor-server-rhel9
+                  - mirrors:
+                      - quay.io/securesign/rekor-backfill-redis
+                    source: registry.redhat.io/rhtas/rekor-backfill-redis-rhel9
+                  # rekor-search-ui
+                  - mirrors:
+                      - quay.io/securesign/rekor-search-ui
+                    source: registry.redhat.io/rhtas/rekor-search-ui-rhel9
+                  # trillian
+                  - mirrors:
+                      - quay.io/securesign/trillian-logserver
+                    source: registry.redhat.io/rhtas/trillian-logserver-rhel9
+                  - mirrors:
+                      - quay.io/securesign/trillian-logsigner
+                    source: registry.redhat.io/rhtas/trillian-logsigner-rhel9
+                  - mirrors:
+                      - quay.io/securesign/trillian-database
+                    source: registry.redhat.io/rhtas/trillian-database-rhel9
+                  - mirrors:
+                      - quay.io/securesign/trillian-redis
+                    source: registry.redhat.io/rhtas/trillian-redis-rhel9
+                  # scaffold
+                  - mirrors:
+                      - quay.io/securesign/scaffold-tuf-server
+                    source: registry.redhat.io/rhtas/tuf-server-rhel9
+                  # segment-backup-job
+                  - mirrors:
+                      - quay.io/securesign/segment-backup-job
+                    source: registry.redhat.io/rhtas/segment-reporting-rhel9
     - name: deploy-operator
       runAfter:
         - provision-cluster
@@ -104,11 +166,15 @@ spec:
           value: "$(tasks.parse-metadata.results.component-container-image)"
         - name: namespace
           value: "$(params.NAMESPACE)"
+        - name: operatorInstallTimeout
+          value: "$(params.OPERATOR_INSTALL_TIMEOUT)"
       taskSpec:
         params:
           - name: bundleImage
             type: string
           - name: namespace
+            type: string
+          - name: operatorInstallTimeout
             type: string
         volumes:
           - name: credentials
@@ -144,4 +210,7 @@ spec:
               - bundle
               - --namespace
               - "$(params.namespace)"
-              - "$(params.bundleImage)"
+              - --timeout
+              - "$(params.operatorInstallTimeout)"
+              # - "$(params.bundleImage)"
+              - quay.io/securesign/rhtas-operator-bundle:on-pr-91e15f3c78419a61dfe695e9901f6aceb435e3a8
