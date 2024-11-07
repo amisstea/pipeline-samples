@@ -16,6 +16,10 @@ spec:
       name: NAMESPACE
       default: default
       type: string
+    - description: Duration to wait for bundle installation to complete before failing.
+      name: OPERATOR_INSTALL_TIMEOUT
+      default: 5m
+      type: string
   tasks:
     - name: parse-metadata
       taskRef:
@@ -86,9 +90,9 @@ spec:
               resolver: git
               params:
                 - name: url
-                  value: https://github.com/konflux-ci/build-definitions.git
+                  value: https://github.com/amisstea/build-definitions.git
                 - name: revision
-                  value: main
+                  value: KFLUXVNGD-105
                 - name: pathInRepo
                   value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
             params:
@@ -96,6 +100,26 @@ spec:
                 value: $(tasks.provision-eaas-space.results.secretRef)
               - name: version
                 value: "$(steps.pick-version.results.version)"
+              - name: instanceType
+                value: m5.xlarge
+              - name: imageContentSources
+                value: |
+                  - source: registry.redhat.io/openshift-lightspeed-tech-preview/lightspeed-rhel9-operator
+                    mirrors:
+                      - registry.staging.redhat.io/openshift-lightspeed-tech-preview/lightspeed-rhel9-operator
+                      - quay.io/redhat-user-workloads/crt-nshift-lightspeed-tenant/ols/lightspeed-operator
+                  - source: registry.redhat.io/openshift-lightspeed-tech-preview/lightspeed-operator-bundle
+                    mirrors:
+                      - registry.staging.redhat.io/openshift-lightspeed-tech-preview/lightspeed-operator-bundle
+                      - quay.io/redhat-user-workloads/crt-nshift-lightspeed-tenant/ols/bundle
+                  - source: registry.redhat.io/openshift-lightspeed-tech-preview/lightspeed-service-api-rhel9
+                    mirrors:
+                      - registry.staging.redhat.io/openshift-lightspeed-tech-preview/lightspeed-service-api-rhel9
+                      - quay.io/redhat-user-workloads/crt-nshift-lightspeed-tenant/ols/lightspeed-service
+                  - source: registry.redhat.io/openshift-lightspeed-tech-preview/lightspeed-console-plugin-rhel9
+                    mirrors:
+                      - registry.staging.redhat.io/openshift-lightspeed-tech-preview/lightspeed-console-plugin-rhel9
+                      - quay.io/redhat-user-workloads/crt-nshift-lightspeed-tenant/ols/lightspeed-console
     - name: deploy-operator
       runAfter:
         - provision-cluster
@@ -104,11 +128,15 @@ spec:
           value: "$(tasks.parse-metadata.results.component-container-image)"
         - name: namespace
           value: "$(params.NAMESPACE)"
+        - name: operatorInstallTimeout
+          value: "$(params.OPERATOR_INSTALL_TIMEOUT)"
       taskSpec:
         params:
           - name: bundleImage
             type: string
           - name: namespace
+            type: string
+          - name: operatorInstallTimeout
             type: string
         volumes:
           - name: credentials
@@ -144,4 +172,7 @@ spec:
               - bundle
               - --namespace
               - "$(params.namespace)"
-              - "$(params.bundleImage)"
+              - --timeout
+              - "$(params.operatorInstallTimeout)"
+              # - "$(params.bundleImage)"
+              - quay.io/redhat-user-workloads/crt-nshift-lightspeed-tenant/ols/bundle:on-pr-e9de2d026190b40241c803d57d085ecb38c42805@sha256:5351993fc468368b95d4574f83d49810d2c5f7707a48aafc424f71fb8104a9a5
