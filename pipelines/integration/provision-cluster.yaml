@@ -96,3 +96,22 @@ spec:
                 value: "$(steps.create-cluster.results.clusterName)"
               - name: credentials
                 value: credentials
+          - name: copy-secrets
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/konflux-ci/build-definitions.git
+                - name: revision
+                  value: main
+                - name: pathInRepo
+                  value: stepactions/eaas-copy-secrets-to-ephemeral-cluster/0.1/eaas-copy-secrets-to-ephemeral-cluster.yaml
+            params:
+              - name: credentials
+                value: credentials
+              - name: kubeconfig
+                value: "$(steps.get-kubeconfig.results.kubeconfig)"
+              - name: namespace
+                value: default
+              - name: labelSelector
+                value: appstudio.redhat.com/internal=true
