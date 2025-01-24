@@ -12,14 +12,14 @@ spec:
       default: '{"components": [{"name":"test-app", "containerImage": "quay.io/example/repo:latest"}]}'
       type: string
   tasks:
-    - name: provision-eaas-space
+    - name: provision-eaas-space-1
       taskRef:
         resolver: git
         params:
           - name: url
-            value: https://github.com/konflux-ci/build-definitions.git
+            value: https://github.com/amisstea/build-definitions.git
           - name: revision
-            value: main
+            value: KONFLUX-6267-compute-resources
           - name: pathInRepo
             value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
       params:
@@ -27,72 +27,990 @@ spec:
           value: $(context.pipelineRun.name)
         - name: ownerUid
           value: $(context.pipelineRun.uid)
-    - name: provision-cluster
+
+    - name: provision-eaas-space-2
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-eaas-space-3
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-eaas-space-4
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-eaas-space-5
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-eaas-space-6
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-eaas-space-7
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-eaas-space-8
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-eaas-space-9
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-eaas-space-10
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-eaas-space-11
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-eaas-space-12
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-eaas-space-13
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-eaas-space-14
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-eaas-space-15
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-eaas-space-16
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-eaas-space-17
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-eaas-space-18
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-eaas-space-19
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-eaas-space-20
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/amisstea/build-definitions.git
+          - name: revision
+            value: KONFLUX-6267-compute-resources
+          - name: pathInRepo
+            value: task/eaas-provision-space/0.1/eaas-provision-space.yaml
+      params:
+        - name: ownerName
+          value: $(context.pipelineRun.name)
+        - name: ownerUid
+          value: $(context.pipelineRun.uid)
+
+    - name: provision-cluster-1
       runAfter:
-        - provision-eaas-space
+        - provision-eaas-space-1
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
       taskSpec:
-        results:
-          - name: clusterName
-            value: "$(steps.create-cluster.results.clusterName)"
-        volumes:
-          - name: credentials
-            emptyDir: {}
         steps:
-          - name: get-supported-versions
-            ref:
-              resolver: git
-              params:
-                - name: url
-                  value: https://github.com/konflux-ci/build-definitions.git
-                - name: revision
-                  value: main
-                - name: pathInRepo
-                  value: stepactions/eaas-get-supported-ephemeral-cluster-versions/0.1/eaas-get-supported-ephemeral-cluster-versions.yaml
-            params:
-              - name: eaasSpaceSecretRef
-                value: $(tasks.provision-eaas-space.results.secretRef)
-          - name: pick-version
-            ref:
-              resolver: git
-              params:
-                - name: url
-                  value: https://github.com/konflux-ci/build-definitions.git
-                - name: revision
-                  value: main
-                - name: pathInRepo
-                  value: stepactions/eaas-get-latest-openshift-version-by-prefix/0.1/eaas-get-latest-openshift-version-by-prefix.yaml
-            params:
-              - name: prefix
-                value: "$(steps.get-supported-versions.results.versions[0])."
           - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
             ref:
               resolver: git
               params:
                 - name: url
-                  value: https://github.com/konflux-ci/build-definitions.git
+                  value: https://github.com/amisstea/build-definitions.git
                 - name: revision
-                  value: main
+                  value: KONFLUX-6267-compute-resources
                 - name: pathInRepo
                   value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
             params:
               - name: eaasSpaceSecretRef
-                value: $(tasks.provision-eaas-space.results.secretRef)
+                value: $(tasks.provision-eaas-space-1.results.secretRef)
               - name: version
-                value: "$(steps.pick-version.results.version)"
-          - name: get-kubeconfig
+                value: "4.17.20"
+
+    - name: provision-cluster-2
+      runAfter:
+        - provision-eaas-space-2
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
             ref:
               resolver: git
               params:
                 - name: url
-                  value: https://github.com/konflux-ci/build-definitions.git
+                  value: https://github.com/amisstea/build-definitions.git
                 - name: revision
-                  value: main
+                  value: KONFLUX-6267-compute-resources
                 - name: pathInRepo
-                  value: stepactions/eaas-get-ephemeral-cluster-credentials/0.1/eaas-get-ephemeral-cluster-credentials.yaml
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
             params:
               - name: eaasSpaceSecretRef
-                value: $(tasks.provision-eaas-space.results.secretRef)
-              - name: clusterName
-                value: "$(steps.create-cluster.results.clusterName)"
-              - name: credentials
-                value: credentials
+                value: $(tasks.provision-eaas-space-2.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    - name: provision-cluster-3
+      runAfter:
+        - provision-eaas-space-3
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/amisstea/build-definitions.git
+                - name: revision
+                  value: KONFLUX-6267-compute-resources
+                - name: pathInRepo
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
+            params:
+              - name: eaasSpaceSecretRef
+                value: $(tasks.provision-eaas-space-3.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    - name: provision-cluster-4
+      runAfter:
+        - provision-eaas-space-4
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/amisstea/build-definitions.git
+                - name: revision
+                  value: KONFLUX-6267-compute-resources
+                - name: pathInRepo
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
+            params:
+              - name: eaasSpaceSecretRef
+                value: $(tasks.provision-eaas-space-4.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    - name: provision-cluster-5
+      runAfter:
+        - provision-eaas-space-5
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/amisstea/build-definitions.git
+                - name: revision
+                  value: KONFLUX-6267-compute-resources
+                - name: pathInRepo
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
+            params:
+              - name: eaasSpaceSecretRef
+                value: $(tasks.provision-eaas-space-5.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    - name: provision-cluster-6
+      runAfter:
+        - provision-eaas-space-6
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/amisstea/build-definitions.git
+                - name: revision
+                  value: KONFLUX-6267-compute-resources
+                - name: pathInRepo
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
+            params:
+              - name: eaasSpaceSecretRef
+                value: $(tasks.provision-eaas-space-6.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    - name: provision-cluster-7
+      runAfter:
+        - provision-eaas-space-7
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/amisstea/build-definitions.git
+                - name: revision
+                  value: KONFLUX-6267-compute-resources
+                - name: pathInRepo
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
+            params:
+              - name: eaasSpaceSecretRef
+                value: $(tasks.provision-eaas-space-7.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    - name: provision-cluster-8
+      runAfter:
+        - provision-eaas-space-8
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/amisstea/build-definitions.git
+                - name: revision
+                  value: KONFLUX-6267-compute-resources
+                - name: pathInRepo
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
+            params:
+              - name: eaasSpaceSecretRef
+                value: $(tasks.provision-eaas-space-8.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    - name: provision-cluster-9
+      runAfter:
+        - provision-eaas-space-9
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/amisstea/build-definitions.git
+                - name: revision
+                  value: KONFLUX-6267-compute-resources
+                - name: pathInRepo
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
+            params:
+              - name: eaasSpaceSecretRef
+                value: $(tasks.provision-eaas-space-9.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    - name: provision-cluster-10
+      runAfter:
+        - provision-eaas-space-10
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/amisstea/build-definitions.git
+                - name: revision
+                  value: KONFLUX-6267-compute-resources
+                - name: pathInRepo
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
+            params:
+              - name: eaasSpaceSecretRef
+                value: $(tasks.provision-eaas-space-10.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    - name: provision-cluster-11
+      runAfter:
+        - provision-eaas-space-11
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/amisstea/build-definitions.git
+                - name: revision
+                  value: KONFLUX-6267-compute-resources
+                - name: pathInRepo
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
+            params:
+              - name: eaasSpaceSecretRef
+                value: $(tasks.provision-eaas-space-11.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    - name: provision-cluster-12
+      runAfter:
+        - provision-eaas-space-12
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/amisstea/build-definitions.git
+                - name: revision
+                  value: KONFLUX-6267-compute-resources
+                - name: pathInRepo
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
+            params:
+              - name: eaasSpaceSecretRef
+                value: $(tasks.provision-eaas-space-12.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    - name: provision-cluster-13
+      runAfter:
+        - provision-eaas-space-13
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/amisstea/build-definitions.git
+                - name: revision
+                  value: KONFLUX-6267-compute-resources
+                - name: pathInRepo
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
+            params:
+              - name: eaasSpaceSecretRef
+                value: $(tasks.provision-eaas-space-13.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    - name: provision-cluster-14
+      runAfter:
+        - provision-eaas-space-14
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/amisstea/build-definitions.git
+                - name: revision
+                  value: KONFLUX-6267-compute-resources
+                - name: pathInRepo
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
+            params:
+              - name: eaasSpaceSecretRef
+                value: $(tasks.provision-eaas-space-14.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    - name: provision-cluster-15
+      runAfter:
+        - provision-eaas-space-15
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/amisstea/build-definitions.git
+                - name: revision
+                  value: KONFLUX-6267-compute-resources
+                - name: pathInRepo
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
+            params:
+              - name: eaasSpaceSecretRef
+                value: $(tasks.provision-eaas-space-15.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    - name: provision-cluster-16
+      runAfter:
+        - provision-eaas-space-16
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/amisstea/build-definitions.git
+                - name: revision
+                  value: KONFLUX-6267-compute-resources
+                - name: pathInRepo
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
+            params:
+              - name: eaasSpaceSecretRef
+                value: $(tasks.provision-eaas-space-16.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    - name: provision-cluster-17
+      runAfter:
+        - provision-eaas-space-17
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/amisstea/build-definitions.git
+                - name: revision
+                  value: KONFLUX-6267-compute-resources
+                - name: pathInRepo
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
+            params:
+              - name: eaasSpaceSecretRef
+                value: $(tasks.provision-eaas-space-17.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    - name: provision-cluster-18
+      runAfter:
+        - provision-eaas-space-18
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/amisstea/build-definitions.git
+                - name: revision
+                  value: KONFLUX-6267-compute-resources
+                - name: pathInRepo
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
+            params:
+              - name: eaasSpaceSecretRef
+                value: $(tasks.provision-eaas-space-18.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    - name: provision-cluster-19
+      runAfter:
+        - provision-eaas-space-19
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/amisstea/build-definitions.git
+                - name: revision
+                  value: KONFLUX-6267-compute-resources
+                - name: pathInRepo
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
+            params:
+              - name: eaasSpaceSecretRef
+                value: $(tasks.provision-eaas-space-19.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    - name: provision-cluster-20
+      runAfter:
+        - provision-eaas-space-20
+      matrix:
+        params:
+          - name: cluster
+            value: ["1", "2", "3", "4", "5"]
+      taskSpec:
+        steps:
+          - name: create-cluster
+            computeResources:
+              limits:
+                memory: 512Mi
+                cpu: 200m
+              requests:
+                memory: 128Mi
+                cpu: 100m
+            ref:
+              resolver: git
+              params:
+                - name: url
+                  value: https://github.com/amisstea/build-definitions.git
+                - name: revision
+                  value: KONFLUX-6267-compute-resources
+                - name: pathInRepo
+                  value: stepactions/eaas-create-ephemeral-cluster-hypershift-aws/0.1/eaas-create-ephemeral-cluster-hypershift-aws.yaml
+            params:
+              - name: eaasSpaceSecretRef
+                value: $(tasks.provision-eaas-space-20.results.secretRef)
+              - name: version
+                value: "4.17.20"
+
+    # - name: provision-eaas-space-1
+    #   taskSpec:
+    #     steps:
+    #       - name: provision-eaas-space-dummy
+    #         ref:
+    #           resolver: git
+    #           params:
+    #             - name: url
+    #               value: https://github.com/amisstea/build-definitions.git
+    #             - name: revision
+    #               value: KONFLUX-6267-compute-resources
+    #             - name: pathInRepo
+    #               value: stepactions/dummy/dummy.yaml
+    #         params:
+    #           - name: prefix
+    #             value: foo
+    #     results:
+    #       - name: version
+    #         value: "$(steps.provision-eaas-space-dummy.results.version)"
+
+    # - name: provision-cluster-1
+    #   runAfter:
+    #     - provision-eaas-space-1
+    #   matrix:
+    #     params:
+    #       - name: cluster
+    #         value: ["1", "2", "3", "4", "5"]
+    #   taskSpec:
+    #     steps:
+    #       - name: create-cluster-dummy
+    #         ref:
+    #           resolver: git
+    #           params:
+    #             - name: url
+    #               value: https://github.com/amisstea/build-definitions.git
+    #             - name: revision
+    #               value: KONFLUX-6267-compute-resources
+    #             - name: pathInRepo
+    #               value: stepactions/dummy/dummy.yaml
+    #         params:
+    #           - name: prefix
+    #             value: $(tasks.provision-eaas-space-1.results.version)
